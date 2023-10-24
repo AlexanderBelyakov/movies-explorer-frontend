@@ -9,10 +9,10 @@ export function Login() {
             <h1 className="register__header">Рады видеть!</h1>
             <form className="register__form">
                 <p className="register__text">E-mail</p>
-                <input type="email" className="register__input" />
+                <input required placeholder="Email" type="email" className="register__input" />
                 <span className="register__error">Что-то пошло не так...</span>
                 <p className="register__text">Пароль</p>
-                <input type="password" className="register__input" />
+                <input minLength="2" maxLength="40" placeholder="Пароль" required type="password" className="register__input" />
                 <span className="register__error">Что-то пошло не так...</span>
                 <button type="submit" className="register__button register__button_for-login">Войти</button>
             </form>

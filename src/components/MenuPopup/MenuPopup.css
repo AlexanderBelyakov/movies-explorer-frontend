@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: flex-start;
     position: fixed;
-    height: 1024px;
+    height: 100vh;
     width: 520px;
     background: #202020;
     top:0;
@@ -80,7 +80,7 @@
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
     padding-top: 22px;
-    margin-bottom: 50vh;
+    margin-bottom: 60.5vh;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -139,12 +139,12 @@
     }
 
     .menupopup__savedmovies-link {
-        padding-top: 15px;
-        margin-bottom: 45vh;
+        padding-top: 21px;
+        margin-bottom: 37vh;
     }
 
     .menupopup__close-button {
-        top: 13px;
-        right: 13px;
+        top: 17px;
+        right: 17px;
     }
 }

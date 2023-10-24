@@ -58,6 +58,10 @@
     line-height: normal;
 }
 
+.profile__text:focus {
+    outline: 1px solid #EE3465
+}
+
 .profile__buttons {
     display: flex;
     flex-direction: column;
@@ -91,6 +95,7 @@
     line-height: normal;
     padding-top: 15px;
     margin: 0;
+    text-decoration: none;
 }
 
 .profile__exit:hover {
@@ -122,6 +127,7 @@
 
     .profile__buttons {
         width: 260px;
+        padding-top: 360px;
     }
 
     .profile__input {

@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    
 }
 
 .navigation__signup {
@@ -106,6 +107,11 @@
     text-decoration: none;
 }
 
+.navigation__account {
+    opacity: .8;
+    transition: .5s linear;
+}
+
 .navigation__menu {
     background-image: url("../../images/menu.svg");
     width: 44px;
@@ -119,7 +125,20 @@
     transition: .5s linear;
 }
 
+@media (min-width: 690px) and (max-width: 1140px) {
+    .navigation__unauthorized {
+        width: 183px;
+        margin-right: 0px;
+    }
+}
+
 @media (min-width: 320px) and (max-width: 689px) {
+
+    .navigation__unauthorized {
+        width: 104px;
+        margin-right: 14px;
+    }
+
     .navigation__signup {
         font-size: 10px;
         margin-right: 14px;

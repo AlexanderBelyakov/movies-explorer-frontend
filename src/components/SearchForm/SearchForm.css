@@ -26,6 +26,10 @@
     margin-right: 10px;
 }
 
+.searchform__bar:focus {
+    outline: 1px solid #EE3465
+}
+
 .searchform__bar::placeholder {
     color: #8B8B8B;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -40,6 +44,11 @@
     height: 44px;
     background-image: url(../../images/find.svg);
     background-color: rgba(255, 255, 255, 0);
+}
+
+.searchform__button:hover {
+    opacity: .8;
+    transition: .5s ease-in;
 }
 
 @media (min-width: 768px) and (max-width: 1140px) {

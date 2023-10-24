@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Profile.css'
 
 export function Profile() {
@@ -11,8 +12,10 @@ export function Profile() {
                         <input
                         name="name"
                         className="profile__text"
-                        value="Александр"
+                        placeholder="Имя"
                         type="text"
+                        minLength="2"
+                        maxLength="40"
                         required
                         />
                     </label>
@@ -20,8 +23,8 @@ export function Profile() {
                         <span className="profile__text">E-mail</span>
                         <input
                         name="email"
+                        placeholder="Email"
                         className="profile__text"
-                        value="pochta@yandex.ru"
                         type="email"
                         required
                         />
@@ -29,7 +32,7 @@ export function Profile() {
                 </div>
                 <div className="profile__buttons">
                     <button type="submit" className="profile__edit">Редактировать</button>
-                    <button type="submit" className="profile__exit">Выйти из аккаунта</button>
+                    <Link  to="/" className="profile__exit">Выйти из аккаунта</Link>
                 </div>
             </form>
         </main>

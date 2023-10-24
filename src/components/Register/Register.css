@@ -11,6 +11,11 @@
     height: 38px;
 }
 
+.register__logo:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
+
 .register__link {
     width: 38px;
     height: 38px;
@@ -52,6 +57,11 @@
     padding-left: 15px;
 }
 
+
+.register__input:focus {
+    outline: 1px solid #EE3465
+}
+
 .register__error {
     display: none;
     color: #EE3465;
@@ -74,6 +84,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
 }
 
 .register__button:hover {
