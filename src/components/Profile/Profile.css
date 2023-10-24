@@ -1,0 +1,134 @@
+.profile {
+    width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 75px;
+}
+
+.profile__header {
+    color: #FFF;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    padding-bottom: 105px;
+    padding-left: 25px;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile__inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.profile__input {
+    display: flex;
+    align-items: center;
+    width: 410px;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid #424242;
+}
+
+.profile__input:nth-child(2) {
+    border: none;
+}
+
+.profile__text {
+    display: flex;
+    width: 122px;
+    border: none;
+    text-align: end;
+    margin: 0;
+    background-color: #202020;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.profile__buttons {
+    display: flex;
+    flex-direction: column;
+    width: 410px;
+    margin: 0 auto;
+    padding-top: 203px;
+}
+
+.profile__edit {
+    color: #FFF;
+    text-align: center;
+    background-color: #202020;
+    font-size: 13px;
+    border: none;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.profile__edit:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
+
+.profile__exit {
+    color: #EE3465;;
+    text-align: center;
+    background-color: #202020;
+    font-size: 13px;
+    border: none;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 15px;
+    margin: 0;
+}
+
+.profile__exit:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
+
+@media (min-width: 768px) and (max-width: 1140px) {
+    .profile {
+        width: 708px;
+        padding-top: 230px;
+    }
+
+    .profile__header {
+        padding-bottom: 80px;
+    }
+
+    .profile__buttons {
+        padding-top: 190px;
+        padding-bottom: 269px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .profile {
+        width: 260px;
+        padding-top: 70px;
+    }
+
+    .profile__buttons {
+        width: 260px;
+    }
+
+    .profile__input {
+        width: 260px;
+    }
+
+    .profile__header {
+        padding-bottom: 60px;
+    }
+}

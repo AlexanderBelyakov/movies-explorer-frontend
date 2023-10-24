@@ -1,0 +1,9 @@
+.register__button_for-login {
+    margin-top: 175px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .register__button_for-login {
+        margin-top: 247px;
+    }
+}

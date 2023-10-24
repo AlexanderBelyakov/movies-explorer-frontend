@@ -1,0 +1,8 @@
+.app {
+  min-height: 100vh;
+  background-color: #202020;;
+  min-width: 320px;
+  margin: 0 auto;
+  font-family: 'Inter', Arial, sans-serif;
+  padding: 0 calc(0 - (100vw - 100%)) 0 0;
+}

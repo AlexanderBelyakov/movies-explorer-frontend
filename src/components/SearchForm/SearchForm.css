@@ -1,0 +1,65 @@
+.searchform {
+    max-width: 1140px;
+    padding-top: 77px;
+    margin: 0 auto;
+    border-bottom: 1px solid #424242;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.searchform__form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchform__bar {
+    width:1065px;
+    height: 50px;
+    background-color: #2F2F2F;
+    border-radius: 8px;
+    border:  none;
+    color: #FFF;
+    padding-left: 20px;
+    margin-right: 10px;
+}
+
+.searchform__bar::placeholder {
+    color: #8B8B8B;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.searchform__button {
+    border: none;
+    width: 44px;
+    height: 44px;
+    background-image: url(../../images/find.svg);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+@media (min-width: 768px) and (max-width: 1140px) {
+    .searchform {
+        width: 708px;
+    }
+
+    .searchform__bar {
+        width: 654px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .searchform {
+        width: 292px;
+    }
+
+    .searchform__bar {
+        width: 238px;
+        height: 44px;
+        padding-left: 13px;
+    }
+}

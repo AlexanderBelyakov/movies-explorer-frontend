@@ -1,0 +1,216 @@
+.aboutproject {
+    max-width: 1140px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 70px;
+    flex-direction: column;
+}
+
+.aboutproject__header {
+    color: #FFF;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+    border-bottom: 1px solid #DADADA;
+    width: 100%;
+    padding-bottom: 23px;
+    padding-top: 110px;
+    margin: 0;
+}
+
+.aboutproject__article {
+    display: flex;
+}
+
+.aboutproject__shell {
+    color: #FFF;
+    font-weight: 400;
+    margin-right: 50px;
+}
+
+.aboutproject__shell:nth-child(2) {
+    margin: 0;
+}
+
+.aboutproject__title {
+    font-size: 20px;
+    letter-spacing: -0.8px;
+    line-height: normal;
+    margin: 0;
+    padding: 70px 0 26px;
+}
+
+.aboutproject__text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 110px;
+}
+
+.aboutproject__plan {
+    display: flex;
+}
+
+.aboutproject__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1140px;
+}
+
+.aboutproject__backend-text {
+    margin: 0;
+    color: #000;
+    background-color: #3DDC84;
+    width: 228px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.aboutproject__frontend-text {
+    margin: 0;
+    color: #FFF;
+    background-color: #303030;
+    width: 912px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.aboutproject__span {
+    margin: 0;
+    color: #8B8B8B;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px; /* 121.429% */
+    padding-top: 14px;
+    padding-bottom: 110px;
+}
+
+
+@media (min-width: 690px) and (max-width: 1140px) {
+    .aboutproject {
+        max-width: 668px;
+        padding: 0 50px;
+    }
+
+    .aboutproject__header {
+        padding-top: 90px;
+    }
+
+    .aboutproject__shell {
+        margin-right: 39px;
+    }
+
+    .aboutproject__text {
+        color: #FFF;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 150% */
+    }
+
+    .aboutproject__title {
+        padding-bottom: 24px;
+    } 
+
+    .aboutproject__backend-text {
+        max-width: 140px;
+    }
+
+    .aboutproject__frontend-text {
+        max-width: 528px;
+    }
+
+    .aboutproject__text {
+        padding-bottom: 93px;
+    }
+
+    .aboutproject__span {
+        padding-bottom: 90px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 689px) {
+    .aboutproject {
+        max-width: 641px;
+        padding: 0 18px;
+    }
+
+    .aboutproject__header {
+        padding-top: 70px;
+        font-size: 18px;
+        padding-bottom: 28px;
+    }
+
+    .aboutproject__article {
+        flex-direction: column;
+        margin: 0 14px;
+    }
+
+    .aboutproject__shell {
+        margin: 0 14px;
+    }
+
+    .aboutproject__text {
+        color: #FFF;
+        font-family: Inter;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;; /* 150% */
+    }
+
+    .aboutproject__title {
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: -0.72px;
+        width: 284px;
+        padding: 60px 0 16px;
+    } 
+
+
+    .aboutproject__shell:nth-child(2) {
+        margin: 0 14px;
+    }
+
+    .aboutproject__backend-text {
+        max-width: 100px;
+        font-size: 11px;
+    }
+
+    .aboutproject__frontend-text {
+        max-width: 184px;
+        font-size: 11px;
+    }
+
+    .aboutproject__plan {
+        padding-top: 60px;
+    }
+
+    .aboutproject__text {
+        padding-bottom: 0px;
+    }
+
+    .aboutproject__span {
+        padding-bottom: 69px;
+        font-size: 11px;
+        padding-top: 10px;
+    }
+}
