@@ -17,7 +17,7 @@
   transition: .5s linear;
 }
 
-@media (min-width: 710px) and (max-width: 1140px) {
+@media (min-width: 710px) and (max-width: 1180px) {
     .header { 
       max-width: 708px;
       margin: 0 auto;

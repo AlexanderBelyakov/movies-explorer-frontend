@@ -52,7 +52,7 @@
     transition: .5s ease-in;
 }
 
-@media (min-width: 768px) and (max-width: 1140px) {
+@media (min-width: 768px) and (max-width: 1180px) {
     .searchform {
         width: 708px;
     }

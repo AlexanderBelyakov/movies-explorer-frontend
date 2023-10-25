@@ -43,7 +43,7 @@
     padding-bottom: 20px;
 }
 
-@media (min-width: 768px) and (max-width: 1140px) {
+@media (min-width: 768px) and (max-width: 1180px) {
     .moviescardlist{
         max-width: 768px;
         padding: 11px 0 20px;
