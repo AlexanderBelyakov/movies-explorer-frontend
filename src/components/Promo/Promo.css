@@ -21,7 +21,7 @@
     padding: 160px 0 150px;
 }
 
-@media (min-width: 690px) and (max-width: 1140px) {
+@media (min-width: 730px) and (max-width: 1140px) {
     .promo {
       max-width: 728px;
       height: 834px;
@@ -36,7 +36,7 @@
     }
   }
 
-  @media (min-width: 320px) and (max-width: 689px) {
+  @media (min-width: 320px) and (max-width: 729px) {
     .promo {
         max-width: 292px;
         height: 586px;

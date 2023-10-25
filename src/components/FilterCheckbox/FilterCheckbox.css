@@ -62,6 +62,11 @@
     padding-left: 12px;
 }
 
+.filtercheckbox__input:focus {
+    outline: 1px solid #EE3465;
+    box-shadow: 0px 0px 0px 1px rgba(255,0,0,1);
+}
+
 @media (min-width: 768px) and (max-width: 1140px) {
     .filtercheckbox {
         padding-top: 40px;

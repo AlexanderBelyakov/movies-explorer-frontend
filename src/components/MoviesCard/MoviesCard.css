@@ -66,6 +66,7 @@
     line-height: 9px;
     top: 34px;
     right: -275px;
+    cursor: pointer;
 }
 
 .moviescard__button_delete {

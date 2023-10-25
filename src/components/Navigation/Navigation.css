@@ -117,7 +117,8 @@
     width: 44px;
     height: 44px;
     border: none;
-    background-color: #202020;;
+    background-color: #202020;
+    cursor: pointer;
 }
 
 .navigation__menu:hover {
