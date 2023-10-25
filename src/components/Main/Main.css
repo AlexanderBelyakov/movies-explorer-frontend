@@ -1,0 +1,10 @@
+.main {
+    display: block;
+    padding-top: 17px;
+}
+
+@media (min-width: 320px) and (max-width: 689px) {
+    .main {
+        padding-top: 10px;
+    }
+}

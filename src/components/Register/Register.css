@@ -1,0 +1,166 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 396px;
+    padding-top: 70px;
+}
+
+.register__logo {
+    width: 38px;
+    height: 38px;
+}
+
+.register__logo:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
+
+.register__link {
+    width: 38px;
+    height: 38px;
+}
+
+.register__header {
+    margin: 0;
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 40px 0 20px;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register__text {
+    margin: 0;
+    padding: 20px 0 10px;
+    color: #8B8B8B;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.register__input {
+    border-radius: 8px;
+    background-color: #2F2F2F;
+    border: none;
+    height: 46px;
+    color: #FFF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 15px;
+}
+
+
+.register__input:focus {
+    outline: 1px solid #EE3465
+}
+
+.register__error {
+    display: none;
+    color: #EE3465;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 10px;
+    margin: 0;
+}
+
+.register__button {
+    height: 45px;
+    background-color: #4285F4;
+    border: none;
+    border-radius: 3px;
+    margin-top: 85px;
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.register__button:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
+
+.register__question {
+    text-align: center;
+    color: #8B8B8B;
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 16px;
+}
+
+.register__link {
+    color: #4285F4;
+    text-decoration: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.register__link:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
+
+@media (min-width: 768px) and (max-width: 1140px) {
+    .register {
+        padding-top: 232px;
+        padding-bottom: 232px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .register {
+        width: 260px;
+        align-items: center;
+        padding-top: 56px;
+    }
+
+    .register__header {
+        padding-top: 50px;
+        padding-bottom: 80px;
+    }
+
+    .register__form {
+        width: 260px;
+    }
+
+    .register__text {
+        padding-top: 0;
+    }
+
+    .register__input {
+        margin-bottom: 20px;
+    }
+
+    .register__button {
+        margin-top: 154px;
+        font-size: 12px;
+    }
+
+    .register__question {
+        font-size: 12px;
+        padding-top: 13px;
+        padding-bottom: 30px;
+    }
+
+    .register__link {
+        font-size: 12px;
+    }
+}
