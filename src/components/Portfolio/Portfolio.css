@@ -61,7 +61,7 @@
     transition: .3s linear;
 }
 
-@media (min-width: 690px) and (max-width: 1140px) {
+@media (min-width: 690px) and (max-width: 1180px) {
     .portfolio {
         max-width: 668px;
         padding: 0 50px;

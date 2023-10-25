@@ -76,7 +76,7 @@
     object-fit: cover;
 }
 
-@media (min-width: 730px) and (max-width: 1141px) {
+@media (min-width: 730px) and (max-width: 1181px) {
     .aboutme {
         max-width: 668px;
         padding: 0 50px;

@@ -56,13 +56,13 @@
     transition: .3s linear;
 }
 
-@media (min-width: 710px) and (max-width: 1180px) {
+@media (min-width: 726px) and (max-width: 1180px) {
     .footer {
         max-width: 708px;
     }
 }
 
-@media (min-width: 320px) and (max-width: 709px) {
+@media (min-width: 320px) and (max-width: 725px) {
     .footer {
         max-width: 300px;
         padding: 0 10px;

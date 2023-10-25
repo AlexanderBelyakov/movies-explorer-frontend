@@ -17,14 +17,14 @@
   transition: .5s linear;
 }
 
-@media (min-width: 710px) and (max-width: 1180px) {
+@media (min-width: 726px) and (max-width: 1180px) {
     .header { 
       max-width: 708px;
       margin: 0 auto;
     }
   }
 
-@media (min-width: 320px) and (max-width: 709px) {
+@media (min-width: 320px) and (max-width: 725px) {
   .header {
     max-width: 292px;
     margin: 0 auto;

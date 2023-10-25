@@ -62,7 +62,7 @@
     letter-spacing: -0.56px;
 }
 
-@media (min-width: 768px) and (max-width: 1140px) {
+@media (min-width: 768px) and (max-width: 1180px) {
     .techs__header {
         max-width: 668px;
         padding: 90px 0 24px;

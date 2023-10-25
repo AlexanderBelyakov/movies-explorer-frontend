@@ -31,7 +31,7 @@
     transition: .3s linear;
 }
 
-@media (min-width: 320px) and (max-width: 689px) {
+@media (min-width: 320px) and (max-width: 725px) {
     .navtab {
         padding-bottom: 17px;
     }
