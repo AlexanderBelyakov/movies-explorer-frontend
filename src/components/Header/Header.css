@@ -1,0 +1,32 @@
+.header {
+    width: 1140px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    width: 38px;
+    height: 38px;
+    padding: 18px 0;
+}
+
+.header__logo:hover {
+  opacity: .8;
+  transition: .5s linear;
+}
+
+@media (min-width: 726px) and (max-width: 1180px) {
+    .header { 
+      max-width: 708px;
+      margin: 0 auto;
+    }
+  }
+
+@media (min-width: 320px) and (max-width: 725px) {
+  .header {
+    max-width: 292px;
+    margin: 0 auto;
+  }
+}

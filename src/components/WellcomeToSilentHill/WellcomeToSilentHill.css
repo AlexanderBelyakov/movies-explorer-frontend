@@ -1,0 +1,79 @@
+.wellcometosilenthill {
+    max-width: 1140px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 70px;
+    flex-direction: column;
+}
+
+.wellcometosilenthill__header {
+    color: #FFF;
+    text-align: center;
+    margin: 0;
+    font-size: 140px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 246px;
+}
+
+.wellcometosilenthill__text {
+    color: #FFF;
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 5px;
+}
+
+.wellcometosilenthill__link {
+    color: #4285F4;
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    padding-top: 184px;
+}
+
+.wellcometosilenthill__link:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
+
+@media (min-width: 768px) and (max-width: 1140px) {
+    .wellcometosilenthill {
+        padding: 408px 184px 222px;
+    }
+
+    .wellcometosilenthill__header {
+        padding: 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .wellcometosilenthill {
+        padding: 329px 0 30px;
+    }
+
+    .wellcometosilenthill__header {
+        font-size: 80px;
+        padding-top: 0;
+        margin: 0;
+    }
+
+    .wellcometosilenthill__text {
+        font-size: 12px;
+    }
+
+    .wellcometosilenthill__link {
+        margin-top: 284px;
+        padding: 0;
+        font-size: 12px;
+    }
+}
