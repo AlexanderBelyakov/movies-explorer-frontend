@@ -97,8 +97,8 @@ function App() {
     mainApi
       .signIn(email, password)
       .then((res) => {
-        setIsLoggedIn(true);
         localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
         navigate("/movies");
       })
       .catch((err) => {
@@ -110,11 +110,11 @@ function App() {
     mainApi
       .signUp(name, email, password)
       .then((res) => {
-        setIsLoggedIn(true);
-        localStorage.setItem("jwt", res.token);
+        if (res) {
+        handleSignIn(email, password)
         setIsSuccessText("Вы успешно зарегистрировались!");
         setIsSuccessImage(success);
-        navigate("/movies");
+        }
       })
       .catch(() => {
         setIsSuccessText(`Что-то пошло не так!
