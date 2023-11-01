@@ -1,6 +1,9 @@
 import './FilterCheckbox.css'
+import {  useContext } from 'react';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext.js';
 
 export function FilterCheckbox({ shortMovies, handleShortMoviesCheck }) {
+    const currentUser = useContext(CurrentUserContext)
     return (
         <div className="filtercheckbox">
             <label className="filtercheckbox__label">
@@ -8,7 +11,7 @@ export function FilterCheckbox({ shortMovies, handleShortMoviesCheck }) {
                 className="filtercheckbox__input" 
                 type="checkbox"
                 onChange={handleShortMoviesCheck}
-                defaultChecked={shortMovies ? true : false}
+                defaultChecked={shortMovies}
                 />
                 <span className="filtercheckbox__slider"></span>
             </label>

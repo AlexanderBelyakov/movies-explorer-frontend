@@ -111,7 +111,7 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
       <SearchForm
         handleSearchFormSubmit={handleSearchFormSubmit}
         handleShortMoviesCheck={handleShortMoviesCheck}
-        shortMoviesList={shortMoviesCheck}
+        shortMoviesCheck={shortMoviesCheck}
       />
       
       {!NotFound && (

@@ -46,13 +46,13 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
   function handleShortMoviesCheck() {
     if (shortMoviesCheck) {
       setShortMoviesCheck(false);
-      localStorage.setItem(`${currentUser._id} - shortSavedMovies`, false);
+      // localStorage.setItem(`${currentUser._id} - shortSavedMovies`, false);
       filteredMoviesList.length === 0 ? setNotFound(true) : setNotFound(false);
       setQueryMovies(filteredMoviesList);
     } 
     else {
       setShortMoviesCheck(true);
-      localStorage.setItem(`${currentUser._id} - shortSavedMovies`, true);
+      // localStorage.setItem(`${currentUser._id} - shortSavedMovies`, true);
       setQueryMovies(sortShortMovies(filteredMoviesList));
       sortShortMovies(filteredMoviesList).length === 0 ? setNotFound(true) : setNotFound(false);
     }
