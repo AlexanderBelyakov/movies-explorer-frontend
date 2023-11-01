@@ -36,8 +36,9 @@ function App() {
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    setIsLoaderOn(true);
+    
     if (jwt) {
+      setIsLoaderOn(true);
       mainApi
         .checkTokenValidity()
         .then((res) => {
@@ -53,6 +54,8 @@ function App() {
           setIsLoaderOn(false); 
           setIsAppReady(true);
         })
+    } else {
+      setIsAppReady(true)
     }
   }, []);
 
