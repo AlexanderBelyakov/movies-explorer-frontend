@@ -31,7 +31,6 @@ function App() {
   const [isInfoTooltipOpen, showInfoTooltip] = React.useState(false);
 
   const [addedMoviesList, setAddedMoviesList] = React.useState([]);
-  const [request, setRequest] = React.useState();
 
   const [isLoaderOn, setIsLoaderOn] = React.useState(false);
 
@@ -111,6 +110,10 @@ function App() {
       .signUp(name, email, password)
       .then((res) => {
         if (res) {
+        localStorage.removeItem(`${undefined} - movieSearch`);
+        localStorage.removeItem(`${undefined} - shortMovies`);
+        localStorage.removeItem(`${undefined} - shortSavedMovies`);
+        localStorage.removeItem(`${undefined} - movies`)
         handleSignIn(email, password)
         setIsSuccessText("Вы успешно зарегистрировались!");
         setIsSuccessImage(success);
@@ -246,7 +249,7 @@ function App() {
             <ProtectedRoute
               component={Profile}
               loggedIn={isLoggedIn}
-              onUpdateUser={handleUpdateUser}
+              handleEditProfile={handleUpdateUser}
               onClick={handleSignOut}
             />
           </>

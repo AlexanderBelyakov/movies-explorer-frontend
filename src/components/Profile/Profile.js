@@ -2,50 +2,29 @@ import { Link } from 'react-router-dom'
 import { useEffect, useContext, useState } from 'react';
 import './Profile.css'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import useValidationForm from '../../hooks/useValidationForm';
 
 export function Profile(props) {
     const currentUser = useContext(CurrentUserContext);
-    const [email, setEmail] = useState(currentUser.email);
-    const [name, setName] = useState(currentUser.name);
+    const { values, errors, isValid, handleChangeForm, resetFormInputs } = useValidationForm();
+
+    useEffect(() => {
+        if (currentUser) {
+          resetFormInputs(currentUser, {}, true);
+        }
+    }, [currentUser, resetFormInputs]);
+
+    const inputValidity = (!isValid || (currentUser.name === values.name && currentUser.email === values.email));
+
+    function handleFormSubmit(evt) {
+        evt.preventDefault();
+        props.handleEditProfile(values);
+    }
+
     const [emailDirty, setEmailDirty] = useState(false);
     const [nameDirty, setNameDirty] = useState(false);
     const [emailError, setEmailError] = useState("Поле не может быть пустым");
     const [nameError, setNameError] = useState("Поле не может быть пустым");
-    const [formValid, setFormValid] = useState(false)
-
-    useEffect(() => {
-        if(emailError || nameError) {
-            setFormValid(false)
-        } else {
-            setFormValid(true)
-        }
-    }, [emailError, nameError])
-
-    const emailHandler = (e) => {
-        setEmail(e.target.value)
-        const re =
-  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if(!re.test(String(e.target.value).toLowerCase())) {
-            setEmailError('Некорректный email')
-        } else if(e.target.value ===  currentUser.email) {
-            setEmailError('Введите новую почту')
-        }
-        else {
-            setEmailError("")
-        }
-    }
-
-    const nameHandler = (e) => {
-        setName(e.target.value)
-        if(e.target.value.length < 2 || e.target.value.length > 40) {
-            setNameError("Имя должно состоять от 2 до 40 символов")
-        } else if(e.target.value ===  currentUser.name) {
-            setNameError("Введите новое имя")
-        }
-        else {
-            setNameError("")
-        }
-    }
 
     const blurHandler = (e) => {
         switch (e.target.name) {
@@ -57,17 +36,9 @@ export function Profile(props) {
             break
         }
     }
-  
-    function handleSubmitSign(evt) {
-      evt.preventDefault();
-      props.onUpdateUser({
-        name: name,
-        email: email
-      });
-    }
     return (
         <main className="profile">
-            <form className="profile__form" name="profile" onSubmit={handleSubmitSign}>
+            <form className="profile__form" name="profile" onSubmit={handleFormSubmit}>
                 <h1 className="profile__header">Привет, {currentUser.name}!</h1>
                 <div className="profile__inputs">
                     <label className="profile__input">
@@ -81,11 +52,11 @@ export function Profile(props) {
                         maxLength="40"
                         required
                         onBlur={e => blurHandler(e)}
-                        onChange={e => nameHandler(e)}
-                        value={name}
+                        onChange={handleChangeForm}
+                        value={values.name}
                         />
                     </label>
-                    {(nameDirty && nameError) && <span className="register__error">{nameError}</span>}
+                    {(nameDirty && nameError) && <span className="register__error">{errors.name}</span>}
                     <label className="profile__input">
                         <span className="profile__text">E-mail</span>
                         <input
@@ -95,14 +66,14 @@ export function Profile(props) {
                         type="email"
                         required
                         onBlur={e => blurHandler(e)}
-                        onChange={e => emailHandler(e)}
-                        value={email}
+                        onChange={handleChangeForm}
+                        value={values.email}
                         />
                     </label>
-                    {(emailDirty && emailError) && <span className="register__error">{emailError}</span>}
+                    {(emailDirty && emailError) && <span className="register__error">{errors.email}</span>}
                 </div>
                 <div className="profile__buttons">
-                    <button type="submit" disabled={!formValid} className="profile__edit">Редактировать</button>
+                    <button type="submit" disabled={inputValidity} className="profile__edit">Редактировать</button>
                     <Link to="/" className="profile__exit" onClick={props.onClick}>Выйти из аккаунта</Link>
                 </div>
             </form>

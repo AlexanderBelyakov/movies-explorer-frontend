@@ -9,6 +9,22 @@ export default function useValidationForm() {
     const input = evt.target;
     const { value, name } = input;
 
+    if (name === 'name' && input.validity.patternMismatch) {
+      input.setCustomValidity('')
+    } else {
+      input.setCustomValidity('');
+    }
+
+    if (name === 'email') {
+      const re =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      if (re.test(value)) {
+        input.setCustomValidity('');
+      } else {
+          input.setCustomValidity('Некорректный email');
+      }
+    }
+
     setValues({ ...values, [name]: value }); 
     setErrors({ ...errors, [name]: input.validationMessage });
     setIsValid(input.closest('form').checkValidity()); 
