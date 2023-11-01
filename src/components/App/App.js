@@ -29,7 +29,10 @@ function App() {
   const [isSuccessText, setIsSuccessText] = React.useState(null);
   const [isSuccessImage, setIsSuccessImage] = React.useState(null);
   const [isInfoTooltipOpen, showInfoTooltip] = React.useState(false);
+
   const [addedMoviesList, setAddedMoviesList] = React.useState([]);
+  const [request, setRequest] = React.useState();
+
   const [isLoaderOn, setIsLoaderOn] = React.useState(false);
 
   const navigate = useNavigate();
@@ -136,9 +139,14 @@ function App() {
   }
 
   function handleSignOut() {
+    localStorage.removeItem("jwt");
     setCurrentUser({});
     setIsLoggedIn(false);
-    localStorage.removeItem("jwt");
+    addedMoviesList([]);
+    localStorage.removeItem(`${currentUser._id} - shortMovies`);
+    localStorage.removeItem(`${currentUser._id} - movieSearch`);
+    localStorage.removeItem(`${currentUser._id} - shortSavedMovies`);
+    localStorage.removeItem(`${currentUser._id} - movies`)
     localStorage.clear();
   }
 

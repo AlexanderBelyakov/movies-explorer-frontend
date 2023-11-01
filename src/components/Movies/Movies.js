@@ -28,18 +28,18 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
   
 
   useEffect(() => {
-    (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') ? setShortMoviesCheck(true) : setShortMoviesCheck(false)
+    (localStorage.getItem(`${currentUser._id} - shortMovies`) === 'true') ? setShortMoviesCheck(true) : setShortMoviesCheck(false)
   }, [currentUser]);
 
 
   useEffect(() => {
-      if (localStorage.getItem(`${currentUser.email} - movies`)) {
-        const moviesList = JSON.parse(localStorage.getItem(`${currentUser.email} - movies`)
+      if (localStorage.getItem(`${currentUser._id} - movies`)) {
+        const moviesList = JSON.parse(localStorage.getItem(`${currentUser._id} - movies`)
       );
 
       setQueryMovies(moviesList);
 
-      if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') 
+      if (localStorage.getItem(`${currentUser._id} - shortMovies`) === 'true') 
         {
           setFilteredMoviesList(sortShortMovies(moviesList));
         } 
@@ -64,12 +64,12 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
 
     setQueryMovies(movies);
     setFilteredMoviesList(!shortMoviesCheckbox ? movies : sortShortMovies(movies));
-    localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(movies));
+    localStorage.setItem(`${currentUser._id} - movies`, JSON.stringify(movies));
   }
 
   function handleSearchFormSubmit(request) {
-    localStorage.setItem(`${currentUser.email} - shortMovies`, shortMoviesCheck);
-    localStorage.setItem(`${currentUser.email} - movieSearch`, request);
+    localStorage.setItem(`${currentUser._id} - shortMovies`, shortMoviesCheck);
+    localStorage.setItem(`${currentUser._id} - movieSearch`, request);
 
     if (isAllMoviesList.length === 0) {
         moviesApi
@@ -98,7 +98,7 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
     } else {
       setFilteredMoviesList(sortShortMovies(queryMovies));
     }
-    localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMoviesCheck);
+    localStorage.setItem(`${currentUser._id} - shortMovies`, !shortMoviesCheck);
   }
 
   function closePopup() {
@@ -111,7 +111,7 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
       <SearchForm
         handleSearchFormSubmit={handleSearchFormSubmit}
         handleShortMoviesCheck={handleShortMoviesCheck}
-        shortMoviesCheck={shortMoviesCheck}
+        shortMoviesList={shortMoviesCheck}
       />
       
       {!NotFound && (

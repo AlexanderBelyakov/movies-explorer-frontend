@@ -109,7 +109,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-    baseUrl: "https://api.moviegrand.nomoredomainsicu.ru"
+    // baseUrl: "https://api.moviegrand.nomoredomainsicu.ru"
+    baseUrl: "http://localhost:3001"
 })
 
 export default mainApi

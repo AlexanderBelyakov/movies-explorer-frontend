@@ -16,7 +16,7 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
   const [NotFound, setNotFound] = useState(false); 
 
   useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
+    if (localStorage.getItem(`${currentUser._id} - shortSavedMovies`) === 'true') {
       setShortMoviesCheck(true);
       setQueryMovies(sortShortMovies(addedMoviesList));
     } 
@@ -46,13 +46,13 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
   function handleShortMoviesCheck() {
     if (shortMoviesCheck) {
       setShortMoviesCheck(false);
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false);
+      localStorage.setItem(`${currentUser._id} - shortSavedMovies`, false);
       filteredMoviesList.length === 0 ? setNotFound(true) : setNotFound(false);
       setQueryMovies(filteredMoviesList);
     } 
     else {
       setShortMoviesCheck(true);
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true);
+      localStorage.setItem(`${currentUser._id} - shortSavedMovies`, true);
       setQueryMovies(sortShortMovies(filteredMoviesList));
       sortShortMovies(filteredMoviesList).length === 0 ? setNotFound(true) : setNotFound(false);
     }

@@ -16,8 +16,8 @@ export function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, sho
   }, [isValid]);
 
   useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - movieSearch`) && location.pathname === '/movies') {
-        const inputValue = localStorage.getItem(`${currentUser.email} - movieSearch`);
+    if (localStorage.getItem(`${currentUser._id} - movieSearch`) && location.pathname === '/movies') {
+        const inputValue = localStorage.getItem(`${currentUser._id} - movieSearch`);
         values.search = inputValue;
         setIsValid(true);
     }
@@ -51,9 +51,9 @@ export function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, sho
         <span className="searchform__error">{errorMessage}</span>
       </form>
       <FilterCheckbox
-        shortMoviesList={shortMoviesList}
+        shortMovies={shortMoviesList}
         handleShortMoviesCheck={handleShortMoviesCheck}
-        onChange={handleShortMoviesCheck} />
+       />
     </section>
   );
 }
