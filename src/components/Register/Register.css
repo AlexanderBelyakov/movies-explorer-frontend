@@ -63,7 +63,6 @@
 }
 
 .register__error {
-    display: none;
     color: #EE3465;
     font-size: 10px;
     font-style: normal;
@@ -85,6 +84,11 @@
     font-weight: 500;
     line-height: normal;
     cursor: pointer;
+}
+
+.register__button:disabled {
+    background-color: #F8F8F8;
+    color: #C2C2C2;
 }
 
 .register__button:hover {

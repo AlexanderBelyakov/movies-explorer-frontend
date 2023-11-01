@@ -81,7 +81,11 @@
     cursor: pointer;
 }
 
-.profile__edit:hover {
+.profile__edit:disabled {
+    color: #3a3a3a;
+}
+
+.profile__edit:active:hover {
     opacity: .8;
     transition: .5s linear;
 }

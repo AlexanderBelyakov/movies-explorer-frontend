@@ -1,19 +1,37 @@
-import './MoviesCard.css'
-import logo from "../../images/me.jpg";
-import deletepic from "../../images/delete.svg";
-import { useLocation } from 'react-router-dom';
+import './MoviesCard.css';
 
-export function MoviesCard({name}) {
-    const location = useLocation();
-    return (
-        <div className="moviescard">
-            {location.pathname==='/movies' && (<button className="moviescard__button">Сохранить</button>)}
-            {location.pathname==='/saved-movies' && (<button className="moviescard__button moviescard__button_delete"><img className="moviescard__delete" alt="удалить" src={deletepic} /></button>)}
-            <img src={logo} alt={name} className="moviescard__image" />
-            <div className="moviescard__info">
-                <p className="moviescard__name">{name}</p>
-                <p className="moviescard__time">1ч 17м</p>
-            </div>
+import { convertMovieDuration } from '../../utils/utils.js';
+import { useLocation } from 'react-router-dom';
+import deletepic from '../../images/delete.svg'
+
+export function MoviesCard({ movie, added, onAddClick, onRemoveClick }) {
+  const location = useLocation();
+  
+  function handleAddClick() {
+    onAddClick(movie);
+  }
+
+  function handleRemoveClick() {
+    onRemoveClick(movie);
+  }
+
+  return (
+    <li className="moviescard">
+        {location.pathname==='/movies' && (<button onClick={added ? handleRemoveClick : handleAddClick} className={!added ? "moviescard__button" : "moviescard__button_saved"}>{!added ? "Сохранить" : ""}</button>)}
+        {location.pathname==='/saved-movies' && (<button onClick={handleRemoveClick} className="moviescard__button moviescard__button_delete"><img className="moviescard__delete" alt="удалить" src={deletepic} /></button>)}
+        <a target="_blank" rel="noreferrer" href={movie.trailerLink}>
+        <img 
+        src={movie.image}
+        alt={movie.nameRU} 
+        className="moviescard__image" 
+        />
+        </a>
+        <div className="moviescard__info">
+            <p className="moviescard__name">{movie.nameRU}</p>
+            <p className="moviescard__time">{convertMovieDuration(movie.duration)}</p>
         </div>
-    )
+    </li>
+  )
 }
+
+

@@ -1,11 +1,9 @@
-
 import './App.css';
 import React from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Routes, Route, useNavigate} from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Main } from '../Main/Main';
 import { Footer } from '../Footer/Footer';
-
 import { Movies } from '../Movies/Movies';
 import { SavedMovies } from '../SavedMovies/SavedMovies';
 import { Profile } from '../Profile/Profile';
@@ -13,16 +11,173 @@ import { Register } from '../Register/Register';
 import { Login } from '../Login/Login';
 import { WellcomeToSilentHill } from '../WellcomeToSilentHill/WellcomeToSilentHill';
 import { MenuPopup } from '../MenuPopup/MenuPopup';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import {InfoTooltip} from '../InfoToolTip/InfoToolTip'
+import {ProtectedRoute} from '../ProtectedRoute/ProtectedRoute'
+import Preloader from '../Preloader/Preloader'
+
+import mainApi from '../../utils/MainApi'
+
+import success from "../../images/success.png";
+import fail from "../../images/fail.png";
 
 function App() {
+  const [isAppReady, setIsAppReady] = React.useState(false)
   const [isMenuPopupOpen, showMenuPopup] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isSuccessText, setIsSuccessText] = React.useState(null);
+  const [isSuccessImage, setIsSuccessImage] = React.useState(null);
+  const [isInfoTooltipOpen, showInfoTooltip] = React.useState(false);
+  const [addedMoviesList, setAddedMoviesList] = React.useState([]);
+  const [isLoaderOn, setIsLoaderOn] = React.useState(false);
+
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    setIsLoaderOn(true);
+    if (jwt) {
+      mainApi
+        .checkTokenValidity()
+        .then((res) => {
+          if (res) {
+            setIsLoggedIn(true);
+            setCurrentUser(res)
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsLoaderOn(false); 
+          setIsAppReady(true);
+        })
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (isLoggedIn && currentUser) {
+      mainApi
+        .getCurrentUserMovies()
+        .then(data => {
+          const currentUserAddedMovies = data.filter(m => m.owner === currentUser._id);
+          setAddedMoviesList(currentUserAddedMovies);        
+        })
+        .catch(err =>
+          console.log(err)
+        );
+    }
+  }, [currentUser, isLoggedIn]);
+
+  React.useEffect(() => {
+    if (isLoggedIn === true) {
+      setIsLoaderOn(true);
+    mainApi
+      .getUserInfo()
+      .then((user) => {
+        setIsAppReady(true)
+        setCurrentUser(user);  
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() =>
+          setIsLoaderOn(false)
+        );
+  }}, [isLoggedIn]);
+
+  function handleSignIn(email, password) {
+    mainApi
+      .signIn(email, password)
+      .then((res) => {
+        setIsLoggedIn(true);
+        localStorage.setItem("jwt", res.token);
+        navigate("/movies");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function handleSignUp(name, email, password) {
+    mainApi
+      .signUp(name, email, password)
+      .then((res) => {
+        setIsLoggedIn(true);
+        localStorage.setItem("jwt", res.token);
+        setIsSuccessText("Вы успешно зарегистрировались!");
+        setIsSuccessImage(success);
+        navigate("/movies");
+      })
+      .catch(() => {
+        setIsSuccessText(`Что-то пошло не так!
+        Попробуйте ещё раз.`);
+        setIsSuccessImage(fail);
+      })
+      .finally(() => showInfoTooltip(true));
+  }
+
+  function handleUpdateUser(newUserInfo) {
+    mainApi
+      .editUserInfo(newUserInfo)
+      .then((res) => {
+        setCurrentUser(res);
+        setIsSuccessText("Данные изменены!");
+        setIsSuccessImage(success);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(()=>showInfoTooltip(true));
+  }
+
+  function handleSignOut() {
+    setCurrentUser({});
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+    localStorage.clear();
+  }
+
+  function handleAddMovieCard(movieCard) {
+    mainApi
+      .addNewCard(movieCard)
+      .then(newMovieCard => setAddedMoviesList([newMovieCard, ...addedMoviesList]))
+      .catch(err =>
+        err
+      );
+  }
+
+  function handleRemoveMovieCard(movie) {
+    const addedMovie = addedMoviesList.find(
+      (item) => item.movieId === movie.id || item.movieId === movie.movieId
+    );
+    mainApi
+      .deleteCard(addedMovie._id)
+      .then(() => {
+        const newMoviesList = addedMoviesList.filter(m => {
+          return (movie.id === m.movieId || movie.movieId === m.movieId) ? false : true
+        });
+        setAddedMoviesList(newMoviesList);
+      })
+      .catch(err =>
+        err
+      );
+  }
+
   function handleMenuClick() {
     showMenuPopup(true);
   }
+
   function closePopup() {
     showMenuPopup(false)
+    showInfoTooltip(false)
   }
   return (
+    !isAppReady ? (
+      <Preloader isOn={isLoaderOn}/>
+    ) : (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className="app">
       <Routes>
         <Route
@@ -30,7 +185,7 @@ function App() {
         path="/"
         element = {
           <>
-            <Header isLogIn={false}/>
+            <Header isLoggedIn={isLoggedIn} onMenu={handleMenuClick}/>
             <Main />
             <Footer />
           </>
@@ -41,8 +196,16 @@ function App() {
         path="/movies"
         element = {
           <>
-            <Header isLogIn={true} onMenu={handleMenuClick}/>
-            <Movies />
+            <Header isLoggedIn={isLoggedIn} onMenu={handleMenuClick}/>
+            <ProtectedRoute
+              component={Movies}
+              addedMoviesList={addedMoviesList}
+              loggedIn={isLoggedIn}
+              setIsLoaderOn={isLoaderOn}
+              onAddClick={handleAddMovieCard}
+              onRemoveClick={handleRemoveMovieCard}
+            />
+            <Preloader isOn={isLoaderOn}/>
             <Footer />
           </>
         }
@@ -52,8 +215,13 @@ function App() {
         path="/saved-movies"
         element = {
           <>
-            <Header isLogIn={true} onMenu={handleMenuClick}/>
-            <SavedMovies />
+            <Header isLoggedIn={isLoggedIn} onMenu={handleMenuClick}/>
+            <ProtectedRoute
+              component={SavedMovies}
+              addedMoviesList={addedMoviesList}
+              loggedIn={isLoggedIn}
+              onRemoveClick={handleRemoveMovieCard}
+            />
             <Footer />
           </>
         }
@@ -63,23 +231,26 @@ function App() {
         path="/profile"
         element = {
           <>
-            <Header isLogIn={true} onMenu={handleMenuClick}/>
-            <Profile />
+            <Header isLoggedIn={isLoggedIn} onMenu={handleMenuClick}/>
+            <ProtectedRoute
+              component={Profile}
+              loggedIn={isLoggedIn}
+              onUpdateUser={handleUpdateUser}
+              onClick={handleSignOut}
+            />
           </>
         }
         />
         <Route
-        exact
         path="/signup"
         element = {
-          <Register />
+          <Register onSignUp={handleSignUp} />
         }
         />
         <Route
-        exact
         path="/signin"
         element = {
-          <Login />
+          <Login onSignIn={handleSignIn} />
         }
         />
         <Route
@@ -93,9 +264,17 @@ function App() {
       <MenuPopup
           isOpen={isMenuPopupOpen}
           onClose={closePopup}
-        />
+      />
+
+      <InfoTooltip
+          isOpen={isInfoTooltipOpen}
+          onClose={closePopup}
+          signUpImage={isSuccessImage}
+          text={isSuccessText}
+      />
     </div>
-  );
+    </CurrentUserContext.Provider>
+  ));
 }
 
 export default App;
