@@ -3,7 +3,7 @@ const BEATFILM_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
 const WIDTHS = {
     l: {
-      width: 1280,
+      width: 1180,
       cards: {
         onPage: 12,
         new: 3,
