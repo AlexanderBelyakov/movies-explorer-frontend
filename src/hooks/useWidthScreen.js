@@ -25,7 +25,7 @@ function useWidthScreen() {
         }
     };
 
-    return () => window.removeEventListener('resize', handleChangeScreenWidth); 
+    return () => window.removeEventListener('resize', resizeController); 
   }, [getWidth]);
 
   return screenWidth;

@@ -156,6 +156,10 @@
     .moviescard__info {
         padding-top: 25px;
     }
+
+    .moviescard__button_saved {
+        left:300px
+    }
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
@@ -185,5 +189,9 @@
 
     .moviescard__name {
         margin-left: 0;
+    }
+
+    .moviescard__button_saved {
+        left:260px
     }
 }
