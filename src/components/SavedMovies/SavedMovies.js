@@ -63,7 +63,7 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
       <SearchForm
         handleSearchFormSubmit={handleSearchFormSubmit}
         handleShortMoviesCheck={handleShortMoviesCheck}
-        shortMovies={shortMoviesCheck}
+        shortMoviesList={shortMoviesCheck}
       />
       
       {!NotFound && 
