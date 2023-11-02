@@ -142,15 +142,16 @@ function App() {
   }
 
   function handleSignOut() {
+    setAddedMoviesList([]);
     localStorage.removeItem("jwt");
-    setCurrentUser({});
-    setIsLoggedIn(false);
-    addedMoviesList([]);
     localStorage.removeItem(`${currentUser._id} - shortMovies`);
     localStorage.removeItem(`${currentUser._id} - movieSearch`);
     localStorage.removeItem(`${currentUser._id} - shortSavedMovies`);
     localStorage.removeItem(`${currentUser._id} - movies`)
+    setCurrentUser({});
+    setIsLoggedIn(false);
     localStorage.clear();
+    console.log(addedMoviesList)
   }
 
   function handleAddMovieCard(movieCard) {

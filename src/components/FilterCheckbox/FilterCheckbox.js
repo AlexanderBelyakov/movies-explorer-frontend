@@ -1,7 +1,6 @@
 import './FilterCheckbox.css'
 
 export function FilterCheckbox({ shortMovies, handleShortMoviesCheck }) {
-    console.log(shortMovies)
     return (
         <div className="filtercheckbox">
             <label className="filtercheckbox__label">
