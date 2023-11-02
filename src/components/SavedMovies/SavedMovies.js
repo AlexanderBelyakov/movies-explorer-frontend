@@ -16,14 +16,8 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
   const [NotFound, setNotFound] = useState(false); 
 
   useEffect(() => {
-    if (localStorage.getItem(`${currentUser._id} - shortSavedMovies`) === 'true') {
-      setShortMoviesCheck(true);
-      setQueryMovies(sortShortMovies(addedMoviesList));
-    } 
-    else {
-      setShortMoviesCheck(false);
-      setQueryMovies(addedMoviesList);
-    }
+    setShortMoviesCheck(false);
+    setQueryMovies(addedMoviesList);
   }, [addedMoviesList, currentUser]);
 
   useEffect(() => {
@@ -31,8 +25,8 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
     addedMoviesList.length === 0 ? setNotFound(true) : setNotFound(false);
   }, [addedMoviesList]);
 
-  function handleSearchFormSubmit(request) {
-    const movies = filterMoviesList(addedMoviesList, request, shortMoviesCheck);
+  function handleSearchFormSubmit(request, inBox = false) {
+    const movies = filterMoviesList(addedMoviesList, request, inBox ? !shortMoviesCheck : shortMoviesCheck);
     if (movies.length === 0) {
       setNotFound(true);
     } 
@@ -43,7 +37,7 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
     }
   }
 
-  function handleShortMoviesCheck() {
+  function handleShortMoviesCheck(request) {
     if (shortMoviesCheck) {
       setShortMoviesCheck(false);
       // localStorage.setItem(`${currentUser._id} - shortSavedMovies`, false);
@@ -55,6 +49,9 @@ export function SavedMovies({ onRemoveClick, addedMoviesList}) {
       // localStorage.setItem(`${currentUser._id} - shortSavedMovies`, true);
       setQueryMovies(sortShortMovies(filteredMoviesList));
       sortShortMovies(filteredMoviesList).length === 0 ? setNotFound(true) : setNotFound(false);
+    }
+    if(request) {
+    handleSearchFormSubmit(request, true)
     }
   }
 

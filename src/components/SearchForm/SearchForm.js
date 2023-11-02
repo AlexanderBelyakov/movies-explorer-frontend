@@ -28,6 +28,10 @@ export function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, sho
     return isValid ? handleSearchFormSubmit(values.search) : setErrorMessage("Введите что-нибудь");
   };
 
+  function handleShort() {
+    handleShortMoviesCheck(values.search)
+  }
+
   return (
     <section className="searchform" name="searchform">
       <form
@@ -52,7 +56,7 @@ export function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, sho
       </form>
       <FilterCheckbox
         shortMovies={shortMoviesList}
-        handleShortMoviesCheck={handleShortMoviesCheck}
+        handleShortMoviesCheck={handleShort}
        />
     </section>
   );

@@ -151,7 +151,6 @@ function App() {
     setCurrentUser({});
     setIsLoggedIn(false);
     localStorage.clear();
-    console.log(addedMoviesList)
   }
 
   function handleAddMovieCard(movieCard) {

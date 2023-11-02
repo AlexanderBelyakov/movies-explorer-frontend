@@ -53,6 +53,7 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
 
   function handleSetMoviesList(moviesList, request, shortMoviesCheckbox) {
     const movies = filterMoviesList(moviesList, request, shortMoviesCheckbox);
+    console.log(movies)
 
     if (movies.length === 0) {
       showInfoTooltip(true)
@@ -67,7 +68,7 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
     localStorage.setItem(`${currentUser._id} - movies`, JSON.stringify(movies));
   }
 
-  function handleSearchFormSubmit(request) {
+  function handleSearchFormSubmit(request, inBox = false) {
     localStorage.setItem(`${currentUser._id} - shortMovies`, shortMoviesCheck);
     localStorage.setItem(`${currentUser._id} - movieSearch`, request);
 
@@ -79,7 +80,7 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
             handleSetMoviesList(
               convertMovie(moviesList),
               request,
-              shortMoviesCheck
+              inBox ? !shortMoviesCheck : shortMoviesCheck
             );
           })
           .catch((err) =>
@@ -87,16 +88,21 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
           )
         } 
         else {
-          handleSetMoviesList(isAllMoviesList, request, shortMoviesCheck);
+          handleSetMoviesList(isAllMoviesList, request, inBox ? !shortMoviesCheck : shortMoviesCheck);
         }
+
+
     }
 
-  function handleShortMoviesCheck() {
+  function handleShortMoviesCheck(request) {
     setShortMoviesCheck(!shortMoviesCheck);
     if (shortMoviesCheck) {
       setFilteredMoviesList(queryMovies);
     } else {
       setFilteredMoviesList(sortShortMovies(queryMovies));
+    }
+    if (request) {
+    handleSearchFormSubmit(request, true)
     }
     localStorage.setItem(`${currentUser._id} - shortMovies`, !shortMoviesCheck);
   }
