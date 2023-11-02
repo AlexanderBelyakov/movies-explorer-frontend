@@ -53,7 +53,6 @@ export function Movies({setIsLoaderOn, addedMoviesList, onRemoveClick, onAddClic
 
   function handleSetMoviesList(moviesList, request, shortMoviesCheckbox) {
     const movies = filterMoviesList(moviesList, request, shortMoviesCheckbox);
-    console.log(movies)
 
     if (movies.length === 0) {
       showInfoTooltip(true)
