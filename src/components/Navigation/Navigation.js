@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 export function Navigation(props) {
     const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
     return (<>
-      {props.isLogIn ?
+      {props.isLoggedIn ?
       (!isMobile ? (<div className="navigation__authorized">
         <div className="navigation__films">
           <Link to="/movies" className="navigation__film">Фильмы</Link>

@@ -7,7 +7,7 @@ export function Header(props) {
   return (
     <header className="header">
       <Link to="/"><img className="header__logo" src={logo} alt="Логотип"/> </Link>
-      <Navigation isLogIn={props.isLogIn} onMenu={props.onMenu}/>
+      <Navigation isLoggedIn={props.isLoggedIn} onMenu={props.onMenu}/>
     </header>
   );
 }

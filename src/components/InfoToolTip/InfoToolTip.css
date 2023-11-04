@@ -1,0 +1,132 @@
+.popup {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+}
+  
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity .6s linear;
+}
+
+.popup__overlay {
+    width: 100%;
+    min-height: 150%;
+    position: fixed;
+    content: '';
+    top: 0;
+    left: 0;
+    opacity: .5;
+    background: #000000;
+    z-index: 1;
+}
+
+.popup__card {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    margin: calc(50vh - 165px) calc(50vw - 215px);
+    width: 430px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    z-index: 2;
+  }
+  
+  @media (min-width: 320px) and (max-width: 879px) {
+    .popup__card {
+      width: 282px;
+      margin: calc(50vh - 161px) calc(50vw - 141px);
+    }
+  }
+
+  .popup__card_for-sign-up {
+    height: 330px;
+}
+
+@media (min-width: 320px) and (max-width: 879px) {
+    .popup__card_for-sign-up {
+        height: 308px
+    }
+}
+
+.popup__sign-up-image {
+    width: 120px;
+    height: 120px;
+    margin-top: 60px;
+}
+
+@media (min-width: 320px) and (max-width: 879px) {
+    .popup__sign-up-image {
+        margin-top: 50px;
+    }
+}
+
+.popup__header {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin: 34px 58px 43px 36px;
+    width: 330px;
+  }
+  
+  @media (min-width: 320px) and (max-width: 879px) {
+    .popup__header {
+      font-size: 18px;
+      line-height: 22px;
+      width: 238px;
+      margin: 25px 22px 75px;
+    }
+  }
+  
+  .popup__header_for-sign-up {
+    width: 358px;
+    height: 58px;
+    text-align: center;
+    margin: 32px 36px 60px;
+}
+
+@media (min-width: 320px) and (max-width: 879px) {
+    .popup__header_for-sign-up {
+        width: 244px;
+        height: 48px;
+        font-size: 20px;
+        line-height: 24px;
+        margin: 40px 18px 50px;
+    }
+}
+
+.popup__close-button {
+  min-width: 32px;
+  min-height: 32px;
+  position: absolute;
+  right: -48px;
+  top: -48px;
+  background-image: url(../../images/CloseIconform.png);
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+}
+
+.popup__close-button:hover {
+  opacity: .6;
+  transition: .2s linear;
+}
+
+@media (min-width: 320px) and (max-width: 879px) {
+  .popup__close-button {
+    min-width: 20px;
+    min-height: 20px;
+    background-size: contain;
+    right: 0;
+    top: -35px;
+  }
+}
