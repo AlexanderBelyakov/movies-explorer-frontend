@@ -1,12 +1,16 @@
 theme dark 2 
+#Mesto
+Дипломный проект. Предоставляет пользователю возможность поиска трейлеров фильмов и сохранение понравившихся. Реализованы регистрация и авторизация.
+## Используемые технологии
 
+* React.js
+* Flexbox
 
-##деплой проекта 
-IP 158.160.118.165
+### development build - npm run start
+### production build - npm run build
 
-Frontend https://moviegrand.nomoredomainsicu.ru
+Backend https://github.com/AlexanderBelyakov/movies-explorer-api
 
-Backend http://api.moviegrand.nomoredomainsicu.ru
-
-##пул реквест
-https://github.com/AlexanderBelyakov/movies-explorer-frontend/pull/2
+## Серверная чать реализована при помощи
+* express.js
+* MongoDB
